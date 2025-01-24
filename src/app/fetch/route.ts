@@ -1,4 +1,4 @@
-import {Exercise} from "@/app/exercises/exercises";
+import {Exercise} from "@/app/exercises/exercisesUtils";
 import {fetch} from "next/dist/compiled/@edge-runtime/primitives";
 
 export const dynamic = 'force-dynamic';
