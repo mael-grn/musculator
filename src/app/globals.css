@@ -5,17 +5,105 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --hover: #474747;
+  --light: #e6e5e5;
+  --hover-light: #cac9c9;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  transition: all .3s ease;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  padding: 45px;
+
+}
+
+h1 {
+  margin: 0;
+  font-size: 45px;
+  font-weight: bold;
+}
+
+h2 {
+  margin: 0;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+h3 {
+  margin: 0;
+  font-size: 30px;
+}
+
+p {
+  margin: 0;
+  font-size: 20px;
+}
+
+a {
+  color: var(--foreground);
+    text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+    padding: 0;
+  gap: 15px;
+}
+li {
+  list-style: none;
+  width: 100% ;
+  font-size: 20px;
+  padding: 15px;
+  background-color: var(--light);
+  border-radius: 15px;
+}
+
+button {
+  background-color: var(--foreground);
+  color: var(--background);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+}
+
+button:hover {
+  background-color: var(--hover);
+}
+
+input[type="text"] {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 50px;
+  background-color: var(--light);
+  font: inherit;
+}
+
+input[type="text"]:hover {
+  background-color: var(--hover-light);
+}
+
+input[type="text"]:focus {
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 15px;
+  }
+
+    h1 {
+        font-size: 35px;
+    }
+
 }
