@@ -21,4 +21,7 @@ export async function getExercises(): Promise<Exercise[]> {
     return exerciseList;
 }
 
+export function saveExercise(exercise: Exercise) {
+}
+
 
