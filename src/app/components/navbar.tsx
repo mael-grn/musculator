@@ -10,7 +10,7 @@ export default function Navbar() {
     const isActive = (path : string) => pathname === path || pathname.startsWith(path + "/");
 
     return (
-        <nav className={"z-50 p-3 justify-around md:justify-start fixed flex gap-3 bottom-0 md:top-0 left-0 w-full h-20 md:h-14 bg-lightTransparent backdrop-blur items-center"}>
+        <nav className={"z-50 p-3 justify-around md:justify-start fixed flex gap-3 bottom-0 md:top-0 left-0 w-full h-20 md:h-14 bg-white backdrop-blur items-center"}>
             <p className={"hidden md:block font-extrabold mr-3"}>Musculator 💪</p>
             <Link className={"p-2 flex flex-row gap-2 w-fit justify-center items-center h-full hover:no-underline md:hover:bg-hoverLight rounded-3xl active:scale-90"} href={"/"}>
                 <img className={"w-8 md:w-6"} alt={"icon"} src={isActive("/") ? "/icons/home-solid.svg" : "/icons/home-outline.svg"}/>
