@@ -14,11 +14,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body>
-      <Navbar/>
+    <body>
+    <Navbar/>
+    <script type="module" defer src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/cardio.js"></script>
 
-      {children}
-      </body>
+    {children}
+    </body>
     </html>
   );
 }

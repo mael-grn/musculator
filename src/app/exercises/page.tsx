@@ -9,6 +9,7 @@ export default function Explore() {
     const [nbrExoToShow, setNbrExoToShow] = useState<number>(pallierItem);
     const inputRef : RefObject<HTMLInputElement|null>  = useRef(null);
 
+
     useEffect(() => {
         getExercises().then((exercises) => {
             setExerciseList(exercises);
@@ -33,7 +34,7 @@ export default function Explore() {
         <div className={"w-full md:w-1/3 relative"}>
             <input ref={inputRef} className={" w-full pt-2.5 pb-2.5 pl-3.5 pr-10"} onKeyUp={onSearch} type={"text"}
                    placeholder={"Rechercher"}/>
-            <img alt={"icon"} className={"absolute top-0 right-0 w-fit h-full p-2"} src={"/icons/search.svg"} onClick={onSearch}/>
+            <img alt={"icon"} className={"opacity-50 cursor-pointer absolute top-0 right-0 w-fit h-full p-2 md:hover:opacity-80 active:scale-90"} src={"/icons/search.svg"} onClick={onSearch}/>
         </div>
         <div className={"flex flex-wrap justify-center gap-10"}>
             {

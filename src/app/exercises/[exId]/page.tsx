@@ -2,12 +2,13 @@
 
 import {useParams, useRouter} from "next/navigation";
 import {useEffect, useState} from "react";
-import {Exercise, getExercises} from "@/app/exercises/exercisesUtils";
+import {Exercise, getExercises, isExerciseSaved, removeExercise, saveExercise} from "@/app/exercises/exercisesUtils";
 
 export default function ExercisePage() {
 
     const { exId } = useParams<{ exId: string }>();
     const [exercise, setExercise] = useState<Exercise | null>(null);
+    const [saved, setSaved] = useState(false);
     const router = useRouter();
 
     useEffect(() => {
@@ -15,14 +16,35 @@ export default function ExercisePage() {
             const exo = exercises.find((exercise) => exercise.id === parseInt(exId));
             if (exo) {
                 setExercise(exo);
+                setSaved(isExerciseSaved(parseInt(exId)));
             }
         });
     }, [exId]);
 
+    const toggleSave = () => {
+        if (saved) {
+            removeExercise(parseInt(exId));
+        } else {
+            saveExercise(parseInt(exId));
+        }
+        setSaved(!saved);
+    }
+
     return (
-        <div className={"flex flex-col gap-10"}>
+        <div className={"flex flex-col gap-10 md:mt-10 md:mb-10"}>
             <div className={"flex md:flex-row flex-col md:items-center gap-4"}>
-                <img onClick={() => router.back()} className={"w-12 h-12 p-2 rounded-3xl cursor-pointer bg-[var(--light)] hover:bg-[var(--hover-light)]"} src={"/icons/arrow-left.svg"} alt={"back"}/>
+                <div className={"flex gap-2"}>
+                    <img onClick={() => router.back()}
+                         className={"w-12 h-12 p-2 rounded-3xl cursor-pointer bg-[var(--light)] md:hover:bg-[var(--hover-light)] active:scale-90"}
+                         src={"/icons/arrow-left.svg"} alt={"back"}/>
+                    <div onClick={toggleSave}
+                         className={"flex gap-2 p-3 rounded-3xl bg-light w-fit cursor-pointer md:hover:bg-hoverLight active:scale-90"}>
+                        <img className={"h-6"} src={saved ? "/icons/bookmark-solid.svg" : "/icons/bookmark-outline.svg"}
+                             alt={"icon"}/>
+                        <span>{saved ? "Supprimer" : "Enregister"}</span>
+                    </div>
+                </div>
+
                 <h1>{exercise?.name}</h1>
             </div>
             <div className={"flex flex-col-reverse md:flex-row"}>
