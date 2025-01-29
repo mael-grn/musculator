@@ -31,7 +31,7 @@ export default function ExercisePage() {
     }
 
     return (
-        <div className={"flex flex-col gap-10 md:mt-10 md:mb-10"}>
+        <div className={"flex flex-col gap-10 md:mt-10 md:mb-10 mb-20 md:mb-0"}>
             <div className={"flex md:flex-row flex-col md:items-center gap-4"}>
                 <div className={"flex gap-2"}>
                     <img onClick={() => router.back()}

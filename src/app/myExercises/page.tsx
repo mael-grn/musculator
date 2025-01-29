@@ -19,13 +19,13 @@ export default function MyExercises() {
     }, []);
 
     return (
-        <div className={"w-full h-full md:pt-10"}>
+        <div className={"w-full min-h-full mb-20  md:mb-0 md:pt-10 "}>
             {loading ? (<PageLoading/>) :
-                (<div className={" w-full h-full"}>
+                (<div className={" w-full min-h-full"}>
                     {
                         exercises.length === 0 ? (
-                            <div className={"flex flex-col w-full h-full items-center justify-center gap-6"}>
-                                <p className={"text-center"}>Vous n'avez sauvegardé aucun exercice pour le moment.</p>
+                            <div className={"flex flex-col w-full min-h-full items-center justify-center gap-6"}>
+                                <p className={"text-center"}>Vous n'avez sauvegardé aucun exercice pour le moment 😢</p>
                                 <button onClick={() => router.push("/exercises")}>
                                     Explorer des exercices
                                     <img src={"/icons/arrow-out.svg"} className={"h-6 invert"}/>

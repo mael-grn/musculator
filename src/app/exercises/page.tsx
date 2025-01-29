@@ -30,7 +30,7 @@ export default function Explore() {
     }
 
   return (
-    <div className={"flex flex-col justify-center gap-10 items-center mt-4 md:mt-16"}>
+    <div className={"flex flex-col justify-center gap-10 items-center mt-4 md:mt-16 mb-20 md:mb-0"}>
         <div className={"w-full md:w-1/3 relative"}>
             <input ref={inputRef} className={" w-full pt-2.5 pb-2.5 pl-3.5 pr-10"} onKeyUp={onSearch} type={"text"}
                    placeholder={"Rechercher"}/>
