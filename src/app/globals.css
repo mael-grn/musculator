@@ -16,17 +16,21 @@
   transition: all .3s ease;
 }
 
-html,
-body {
-  min-height: 100%;
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: "Poppins", serif;
-  padding: 45px;
-
+  padding: 60px 45px 45px 45px;
 }
 
 h1 {
@@ -92,6 +96,16 @@ button:hover {
   background-color: var(--hover);
 }
 
+button:active {
+    transform: scale(0.90);
+}
+
+button:disabled {
+  transform: scale(0.90);
+  background-color: var(--hover-light);
+  cursor: default;
+}
+
 input[type="text"] {
   border: none;
   border-radius: 50px;
@@ -109,11 +123,14 @@ input[type="text"]:focus {
 
 @media (max-width: 768px) {
   body {
-    padding: 15px;
+    padding: 15px 15px 75px 15px;
   }
 
     h1 {
         font-size: 35px;
     }
 
+  button:hover {
+    background-color: var(--background);
+  }
 }

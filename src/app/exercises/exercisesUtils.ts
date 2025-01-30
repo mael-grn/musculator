@@ -22,6 +22,19 @@ export async function getExercises(): Promise<Exercise[]> {
     return exerciseList;
 }
 
+export async function getMuscleGroups(): Promise<string[]> {
+    await getExercises();
+    let muscleGroups: string[] = [];
+    exerciseList.forEach(exo => {
+        exo.category.forEach(cat => {
+            if (!muscleGroups.includes(cat)) {
+                muscleGroups.push(cat);
+            }
+        });
+    });
+    return muscleGroups;
+}
+
 export function saveExercise(id: number) {
     let localStrorageSavedExercices = localStorage.getItem("savedExercices");
     let savedExercices : number[] = localStrorageSavedExercices && localStrorageSavedExercices[0] ? JSON.parse(localStrorageSavedExercices) : [];
