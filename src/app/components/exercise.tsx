@@ -6,7 +6,9 @@ export default function ExerciseComponent({exercise, onClick} : {exercise : Exer
     return (
         <div  onClick={onClick ? onClick : () => router.push("/exercises/" + exercise.id)} className={"w-60 bg-[var(--light)] p-3 rounded-2xl flex flex-col gap-2 cursor-pointer hover:bg-[var(--hover-light)] active:scale-90"}>
 
-            <img src={exercise.img} alt={exercise.name} className={"rounded-xl"}/>
+            {
+                exercise.img !== "" && <img src={exercise.img} alt={exercise.name} className={"rounded-xl"}/>
+            }
             <h2 className={"text-xl"}>{exercise.name}</h2>
             <div className={"flex flex-wrap gap-3 flex-1 items-end"}>
                 {

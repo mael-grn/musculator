@@ -2,7 +2,14 @@
 
 import {useParams, useRouter} from "next/navigation";
 import {useEffect, useState} from "react";
-import {Exercise, getExercises, isExerciseSaved, removeExercise, saveExercise} from "@/app/exercises/exercisesUtils";
+import {
+    deleteExercice,
+    Exercise,
+    getExercises,
+    isExerciseSaved,
+    removeExercise,
+    saveExercise
+} from "@/app/exercises/exercisesUtils";
 
 export default function ExercisePage() {
 
@@ -10,6 +17,18 @@ export default function ExercisePage() {
     const [exercise, setExercise] = useState<Exercise | null>(null);
     const [saved, setSaved] = useState(false);
     const router = useRouter();
+    const [askConf, setAskConf] = useState<boolean>(false)
+
+    function actionDeleteExo() {
+        if (exercise && exercise.id >= 1000) {
+            if (askConf) {
+                deleteExercice(exercise.id);
+                router.push("/myExercises");
+            } else {
+                setAskConf(true);
+            }
+        }
+    }
 
     useEffect(() => {
         getExercises().then((exercises) => {
@@ -34,6 +53,7 @@ export default function ExercisePage() {
         <div className={"flex flex-col gap-10 md:mt-10 md:mb-10 mb-20 md:mb-0"}>
             <div className={"flex md:flex-row flex-col md:items-center gap-4"}>
                 <div className={"flex gap-2"}>
+
                     <img onClick={() => router.back()}
                          className={"w-12 h-12 p-2 rounded-3xl cursor-pointer bg-[var(--light)] md:hover:bg-[var(--hover-light)] active:scale-90"}
                          src={"/icons/arrow-left.svg"} alt={"back"}/>
@@ -72,10 +92,27 @@ export default function ExercisePage() {
                             })
                         }
                     </ul>
+                    {
+                        exercise && exercise?.id >= 1000 &&
+                        <div className={"w-full flex justify-center items-center mt-16"}>
+                            <button className={"flex gap-1"} onClick={actionDeleteExo}>
+                                {
+                                    askConf ? "Réappuyez pour valider" : "Supprimer la séance"
+                                }
+                                <img src={"/icons/close.svg"} alt={"close"} className={"w-6 h-6 invert"}/>
+                            </button>
+                        </div>
+                    }
                 </div>
-                <img className={"object-contain h-fit md:sticky md:top-0"} src={exercise?.img} alt={exercise?.name}/>
+                {
+                    exercise?.img !== "" &&
+                    <img className={"object-contain h-fit md:sticky md:top-0"} src={exercise?.img}
+                         alt={exercise?.name}/>
+                }
+
+
             </div>
 
         </div>
     );
-}
+    }

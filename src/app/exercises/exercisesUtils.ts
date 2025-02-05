@@ -14,11 +14,15 @@ export interface Exercise {
 let exerciseList: Exercise[] = [];
 
 export async function getExercises(): Promise<Exercise[]> {
-    if (exerciseList.length === 0) {
-        const data = await fetch ("/exercises/exercises.json");
-        let json = await data.json();
-        exerciseList = json.exosWithDetails;
-    }
+    const data = await fetch ("/exercises/exercises.json");
+    let json = await data.json();
+    exerciseList = json.exosWithDetails;
+
+    const item = localStorage.getItem("createdExercises");
+    if (!item) return exerciseList;
+    const createdExercises = JSON.parse(item);
+    exerciseList = exerciseList.concat(createdExercises);
+
     return exerciseList;
 }
 
@@ -57,8 +61,30 @@ export function isExerciseSaved(id: number): boolean {
 
 export async function getSavedExercices(): Promise<Exercise[]> {
     await getExercises();
+    console.log(exerciseList);
     let localStrorageSavedExercices = localStorage.getItem("savedExercices");
     let savedExercices : number[] = localStrorageSavedExercices && localStrorageSavedExercices[0] ? JSON.parse(localStrorageSavedExercices) : [];
-    return exerciseList.filter(exo => savedExercices.includes(exo.id));
+
+    return exerciseList.filter(exo => savedExercices.includes(exo.id) || exo.id >= 1000);
+}
+
+export async function createExercice(exo: Exercise): Promise<void> {
+    const item = localStorage.getItem("createdExercises");
+    let createdExercises : Exercise[] = [];
+    if (item) {
+        createdExercises = JSON.parse(item);
+    }
+    createdExercises.push(exo);
+    localStorage.setItem("createdExercises", JSON.stringify(createdExercises));
+    await getExercises();
+}
+
+export async function deleteExercice(exId: number): Promise<void> {
+    let item = localStorage.getItem("createdExercises");
+    if (!item) return;
+    let createdExercises = JSON.parse(item);
+    createdExercises = createdExercises.filter((exo: Exercise) => exo.id !== exId);
+    localStorage.setItem("createdExercises", JSON.stringify(createdExercises));
+    await getExercises();
 }
 
