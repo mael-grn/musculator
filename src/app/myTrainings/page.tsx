@@ -37,7 +37,7 @@ export default function MyTrainings() {
 
                             <div className={"flex flex-col gap-10 md:mt-6"}>
                                 <div className={"flex flex-col gap-3 justify-center items-center w-full"}>
-                                    <h2 className={"text-center"}>Vos séances sauvegardés</h2>
+                                    <h2 className={"text-center"}>Vos séances</h2>
                                     <p className={"text-center"}>Pour le moment, vous
                                         avez {trainings.length} séances.</p>
                                     <button onClick={() => router.push("/myTrainings/new")}>

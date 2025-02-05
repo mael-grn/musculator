@@ -20,11 +20,24 @@ export enum joursSemaine {
 let trainingList: Training[] = [];
 
 export async function getTrainings(): Promise<Training[]> {
-    if (trainingList.length === 0) {
-        let localStrorageTrainings = localStorage.getItem("Trainings");
-        trainingList = localStrorageTrainings && localStrorageTrainings[0] ? JSON.parse(localStrorageTrainings) : [];
-    }
+    let localStrorageTrainings = localStorage.getItem("Trainings");
+    trainingList = localStrorageTrainings && localStrorageTrainings[0] ? JSON.parse(localStrorageTrainings) : [];
+    trainingList = sortTrainingsByDay(trainingList);
     return trainingList;
+}
+
+function sortTrainingsByDay(trainings: Training[]): Training[] {
+    const dayOrder = {
+        [joursSemaine.LUNDI]: 1,
+        [joursSemaine.MARDI]: 2,
+        [joursSemaine.MERCREDI]: 3,
+        [joursSemaine.JEUDI]: 4,
+        [joursSemaine.VENDREDI]: 5,
+        [joursSemaine.SAMEDI]: 6,
+        [joursSemaine.DIMANCHE]: 0, // Sunday is often considered the start of the week
+    };
+
+    return [...trainings].sort((a, b) => dayOrder[a.day] - dayOrder[b.day]);
 }
 
 export async function addTraining(training: Training): Promise<void> {

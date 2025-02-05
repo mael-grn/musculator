@@ -20,9 +20,10 @@ export async function getExercises(): Promise<Exercise[]> {
 
     const item = localStorage.getItem("createdExercises");
     if (!item) return exerciseList;
-    const createdExercises = JSON.parse(item);
-    exerciseList = exerciseList.concat(createdExercises);
 
+    let createdExercises = JSON.parse(item);
+    createdExercises = createdExercises.concat(exerciseList);
+    exerciseList = createdExercises;
     return exerciseList;
 }
 
@@ -65,7 +66,7 @@ export async function getSavedExercices(): Promise<Exercise[]> {
     let localStrorageSavedExercices = localStorage.getItem("savedExercices");
     let savedExercices : number[] = localStrorageSavedExercices && localStrorageSavedExercices[0] ? JSON.parse(localStrorageSavedExercices) : [];
 
-    return exerciseList.filter(exo => savedExercices.includes(exo.id) || exo.id >= 1000);
+    return exerciseList.filter(exo => (savedExercices.includes(exo.id) || exo.id >= 1000));
 }
 
 export async function createExercice(exo: Exercise): Promise<void> {

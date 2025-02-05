@@ -41,7 +41,7 @@ export default function MyExercises() {
                             ) :
                             <div className={"flex flex-col gap-10 md:mt-6"}>
                                 <div className={"flex flex-col gap-3 justify-center items-center w-full"}>
-                                    <h2 className={"text-center"}>Vos Exercices sauvegardés</h2>
+                                    <h2 className={"text-center"}>Vos Exercices</h2>
                                     <p className={"text-center"}>Pour le moment, vous
                                         avez {exercises.length} exercices.</p>
                                     <div className={"flex gap-3"}>

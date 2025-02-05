@@ -57,12 +57,25 @@ export default function ExercisePage() {
                     <img onClick={() => router.back()}
                          className={"w-12 h-12 p-2 rounded-3xl cursor-pointer bg-[var(--light)] md:hover:bg-[var(--hover-light)] active:scale-90"}
                          src={"/icons/arrow-left.svg"} alt={"back"}/>
-                    <div onClick={toggleSave}
-                         className={"flex gap-2 p-3 rounded-3xl bg-light w-fit cursor-pointer md:hover:bg-hoverLight active:scale-90"}>
-                        <img className={"h-6"} src={saved ? "/icons/bookmark-solid.svg" : "/icons/bookmark-outline.svg"}
-                             alt={"icon"}/>
-                        <span>{saved ? "Supprimer" : "Enregister"}</span>
-                    </div>
+                    {
+                        exercise && exercise.id >= 1000 ?
+                            <div
+                                 className={"flex gap-2 p-3 rounded-3xl bg-light w-fit"}>
+                                <img className={"h-6"}
+                                     src={"/icons/check-solid.svg"}
+                                     alt={"icon"}/>
+                                <span>Exercice perso</span>
+                            </div>
+                            :
+                            <div onClick={toggleSave}
+                                 className={"flex gap-2 p-3 rounded-3xl bg-light w-fit cursor-pointer md:hover:bg-hoverLight active:scale-90"}>
+                                <img className={"h-6"}
+                                     src={saved ? "/icons/bookmark-solid.svg" : "/icons/bookmark-outline.svg"}
+                                     alt={"icon"}/>
+                                <span>{saved ? "Supprimer" : "Enregister"}</span>
+                            </div>
+                    }
+
                 </div>
 
                 <h1>{exercise?.name}</h1>
@@ -97,7 +110,7 @@ export default function ExercisePage() {
                         <div className={"w-full flex justify-center items-center mt-16"}>
                             <button className={"flex gap-1"} onClick={actionDeleteExo}>
                                 {
-                                    askConf ? "Réappuyez pour valider" : "Supprimer la séance"
+                                    askConf ? "Réappuyez pour valider" : "Supprimer l'exercice"
                                 }
                                 <img src={"/icons/close.svg"} alt={"close"} className={"w-6 h-6 invert"}/>
                             </button>

@@ -54,7 +54,7 @@ export default function Create() {
                      src={"/icons/arrow-left.svg"} alt={"back"}/>
                 <h2 className={"md:text-3xl text-xl"}>Créer un nouvel exercice</h2>
             </div>
-            <div className={"flex flex-col w-full items-center justify-center pl-10 pr-10"}>
+            <div className={"flex flex-col w-full items-center justify-center"}>
                 <form className={"flex flex-col gap-6 w-full items-center justify-center"} onSubmit={onSubmit}>
                     <h3 className={"w-full max-w-96 text-2xl font-bold"}>Nom</h3>
                     <input className={"pt-2.5 pb-2.5 pl-4 pr-4 max-w-96 w-full"} type={"text"}
@@ -186,7 +186,7 @@ export default function Create() {
 
                     <button
                         type={"submit"}
-                        className={"h-10"}
+                        className={"h-10 md:mb-0 mb-10"}
                         disabled={steps.length === 0 || advices.length === 0 || selectedMuscleGroup.length === 0 || name === "" || description === ""}
                     >
                         Valider
