@@ -40,27 +40,27 @@ export default function TrainingPage() {
 
 
     return (
-        <div className={"flex flex-col gap-0 md:mt-10 md:mb-10 mb-20 md:mb-0"}>
-            <div className={"flex md:flex-row flex-col md:items-center gap-4"}>
-                <div className={"flex gap-2"}>
+        <div className={"flex flex-col gap-0 mb-20"}>
+            <div className={"flex flex-row gap-4 items-center sticky top-0 left-0 w-full pt-4 pb-4 z-10 bg-background"}>
+                <div className={"flex gap-4"}>
                     <img onClick={() => router.back()}
-                         className={"w-12 h-12 p-2 rounded-3xl cursor-pointer bg-[var(--light)] md:hover:bg-[var(--hover-light)] active:scale-90"}
+                         className={"w-12 h-12 p-2 rounded-3xl cursor-pointer bg-primary active:scale-90"}
                          src={"/icons/arrow-left.svg"} alt={"back"}/>
                 </div>
 
-                <h1>{training?.name}</h1>
+                <h2>{training?.name}</h2>
             </div>
             <div className={"flex flex-col gap-3"}>
                 <div className={"flex gap-3 items-center"}>
-                    <img className={"w-6 h-6"} src={"/icons/calendar.svg"} alt={"calendar"}/>
-                    <h3>{training?.day}</h3>
+                    <img className={"w-6 h-6 invert"} src={"/icons/calendar.svg"} alt={"calendar"}/>
+                    <p>{training?.day}</p>
                 </div>
                 <div className={"flex flex-wrap gap-2 flex-1 items-start justify-start"}>
                     {
                         training?.muscles.map((muscle, index) => {
                             return (
                                 <span key={index}
-                                      className={"bg-[var(--hover-light)] pt-[5px] pb-[5px] pl-[10px] pr-[10px] rounded-2xl"}>{muscle}</span>
+                                      className={"bg-primary pt-[5px] pb-[5px] pl-[10px] pr-[10px] rounded-2xl"}>{muscle}</span>
                             )
                         })
                     }

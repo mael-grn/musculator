@@ -4,11 +4,12 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --hover: #474747;
-  --light: #e6e5e5;
-  --hover-light: #cac9c9;
+  --background: #000000;
+  --background-hover: #1c1c1c;
+  --foreground: #ffffff;
+  --foreground-hover: #cfcfcf;
+  --primary: #a14343;
+  --primary-hover: #853636;
 }
 
 
@@ -41,7 +42,7 @@ h1 {
 
 h2 {
   margin: 0;
-  font-size: 35px;
+  font-size: 30px;
   font-weight: bold;
 }
 
@@ -55,69 +56,105 @@ p {
   font-size: 20px;
 }
 
-a {
-  color: var(--foreground);
-    text-decoration: none;
-  font-weight: bold;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-ul {
-  display: flex;
-  flex-direction: column;
-    padding: 0;
-  gap: 15px;
-}
-li {
-  list-style: none;
-  width: 100% ;
-  font-size: 20px;
-  padding: 15px;
-  background-color: var(--light);
-  border-radius: 15px;
-}
 
 button {
-  display: flex;
-    align-items: center;
-    justify-content: center;
-  gap: 10px;
-  background-color: var(--foreground);
-  color: var(--background);
+  position: relative;
+  color: var(--foreground);
+  font-family: "Poppins", serif;
+  font-size: 14px;
+  min-height: 40px;
+  cursor: pointer;
   padding: 10px 20px;
-  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 10px;
-}
-
-button:hover {
-  background-color: var(--hover);
+  background-color: var(--primary);
 }
 
 button:active {
-    transform: scale(0.90);
+  transform: scale(0.9);
 }
 
 button:disabled {
-  transform: scale(0.90);
-  background-color: var(--hover-light);
-  cursor: default;
+  cursor: not-allowed;
+  opacity: .5;
 }
 
-input[type="text"] {
-  border: none;
+button:has(img) {
+  padding: 10px 50px 10px 20px;
+}
+
+button img {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  height: 20px;
+
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+
+  button:active:not(:disabled) {
+    background-color: var(--primary-hover);
+  }
+
+  button:active:has(img):not(:disabled) {
+    color: var(--primary-hover);
+  }
+
+  button:active:not(:disabled) img {
+    transform: scale(1.2);
+    right: calc(50% - 10px);
+  }
+}
+
+
+
+input {
+  color: var(--foreground);
+  font-family: "Poppins", serif;
+  font-size: 20px;
+  height: 60px;
+  padding: 10px 20px;
   border-radius: 50px;
-  background-color: var(--light);
-  font: inherit;
+  background-color: var(--background-hover);
+  outline: none;
 }
 
-input[type="text"]:hover {
-  background-color: var(--hover-light);
+input:hover {
+  outline: none;
 }
 
-input[type="text"]:focus {
+input:focus {
+  outline: none;
+  transform: scale(1.05);
+}
+
+input::placeholder {
+  color: var(--foreground);
+}
+
+input:focus {
+  outline: none;
+}
+
+textarea {
+  padding: 20px;
+  border-radius: 20px;
+  background-color: var(--background-hover);
+  color: var(--foreground);
+  width: 100%;
+  max-width: 100%;
+  height: 600px;
+  max-height: 600px;
+  min-height: 600px;
+  min-width: 100%;
+  resize: none;
+}
+
+textarea:focus {
   outline: none;
 }
 
@@ -129,8 +166,4 @@ input[type="text"]:focus {
     h1 {
         font-size: 35px;
     }
-
-  button:hover {
-    background-color: var(--background);
-  }
 }

@@ -5,8 +5,8 @@ export default function manifest() {
         description: 'Have bigger muscle',
         start_url: '/',
         display: 'standalone',
-        background_color: '#ffffff',
-        theme_color: '#ffffff',
+        background_color: '#000000',
+        theme_color: '#000000',
         icons: [
             {
                 src: '/icon-192x192.png',

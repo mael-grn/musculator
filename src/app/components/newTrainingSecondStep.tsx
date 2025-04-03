@@ -114,7 +114,7 @@ export default function NewTrainingSecondStep({training, setTraining} : {trainin
                                    type={"text"}
                                    placeholder={"Rechercher"}/>
                             <img alt={"icon"}
-                                 className={"opacity-50 cursor-pointer absolute top-0 right-0 w-fit h-full p-2 md:hover:opacity-80 active:scale-90"}
+                                 className={"opacity-50 cursor-pointer absolute invert  top-3 right-3 w-8 h-8 active:scale-90"}
                                  src={"/icons/search.svg"} onClick={onSearch}/>
                         </div>
                         <div className={"flex flex-wrap justify-center gap-10"}>
@@ -130,8 +130,8 @@ export default function NewTrainingSecondStep({training, setTraining} : {trainin
                                             {
                                                 selectedExercises.includes(exercise) && (
                                                     <span
-                                                        className={"absolute top-0 right-0 w-10 h-10 rounded-3xl bg-background flex justify-center items-center"}>
-                                            <img className={"w-9 h-9"} src={"/icons/check-solid.svg"} alt={"check"}/>
+                                                        className={"absolute top-0 right-0 w-10 h-10 rounded-3xl bg-primary flex justify-center items-center"}>
+                                            <img className={"w-6 h-6 invert"} src={"/icons/check-outline.svg"} alt={"check"}/>
                                         </span>
                                                 )
                                             }
@@ -145,7 +145,7 @@ export default function NewTrainingSecondStep({training, setTraining} : {trainin
                             <button onClick={showMoreItem} className={"mb-5"}>Voir plus</button>
                         }
                         <div
-                            className={"fixed md:bottom-10 bottom-24 w-full flex justify-center items-center pl-3 pr-3"}>
+                            className={"fixed bottom-[75px] w-full flex justify-center items-center p-6  bg-gradient-to-b from-transparent to-background"}>
                             <button className={"w-full md:w-1/2 flex flex-col gap-1 text-xl"}
                                     disabled={selectedExercises.length === 0}
                                     onClick={onValidate}>Valider <span

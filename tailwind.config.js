@@ -6,12 +6,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: '#ffffff',
-        foreground: '#171717',
-        hover: '#474747',
-        light: '#e6e5e5',
-        lightTransparent: 'rgba(230,229,229,0.66)',
-        hoverLight: '#cac9c9',
+        background: 'var(--background)',
+        backgroundHover: 'var(--background-hover)',
+        foreground: 'var(--foreground)',
+        foregroundHover: 'var(--foreground-hover)',
+        primary: 'var(--primary)',
+        primaryHover: 'var(--primary-hover)',
       },
     },
   },

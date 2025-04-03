@@ -62,13 +62,13 @@ export default function NewTrainingFirstStep({setTraining}: { setTraining: (trai
                             {
                                 selectedMuscleGroup.map((muscle) => (
                                     <span
-                                        className={"pt-1 pb-1 pl-3 pr-1 rounded-3xl bg-light flex items-center justify-center gap-1"}
+                                        className={"pt-1 pb-1 pl-3 pr-1 rounded-3xl bg-primary flex items-center justify-center gap-1"}
                                         key={muscle}>
                                     {muscle}
                                         <span
-                                            className={"w-6 h-6 flex items-center justify-center md:hover:bg-hoverLight active:scale-90 rounded-3xl"}
+                                            className={"w-6 h-6 flex items-center justify-center active:scale-90 rounded-3xl"}
                                             onClick={() => setSelectedMuscleGroup(selectedMuscleGroup.filter(item => item !== muscle))}>
-                                        <img className={"w-4 h-4"} src={"/icons/close.svg"} alt={"close"}/>
+                                        <img className={"w-4 h-4 invert"} src={"/icons/close.svg"} alt={"close"}/>
                                     </span>
                                 </span>
                                 ))
@@ -77,12 +77,12 @@ export default function NewTrainingFirstStep({setTraining}: { setTraining: (trai
                         {
                             showMuscleGroupResults && muscleGroup.length !== selectedMuscleGroup.length &&
                             <div
-                                className={`overflow-auto w-full bg-light p-3 rounded-2xl max-w-96`}>
+                                className={`overflow-auto w-full p-3 flex gap-3 flex-wrap items-center justify-center`}>
                                 {
                                     muscleGroup.filter((muscle) => !selectedMuscleGroup.includes(muscle) && muscle.includes(theMuscleTheUserWantToSearch)).map((muscle) => (
                                         <div key={muscle} className={"flex gap-3 items-center"}>
                                         <span
-                                            className={"cursor-pointer md:hover:bg-hoverLight active:scale-90 rounded-3xl p-1 w-full text-center"}
+                                            className={"cursor-pointer bg-backgroundHover w-fit active:scale-90 rounded-3xl p-1 pl-3 pr-3 text-center"}
                                             onMouseDown={() => selectedMuscleGroup.push(muscle)}>{muscle}</span>
                                         </div>
                                     ))
@@ -91,7 +91,7 @@ export default function NewTrainingFirstStep({setTraining}: { setTraining: (trai
                         }
                         <p className={"mt-6"}>Jour de la semaine</p>
                         <select
-                            className={" pt-2.5 pb-2.5 pl-4 pr-4 w-full max-w-96 rounded-3xl bg-light outline-0 cursor-pointer md:hover:bg-hoverLight focus:hover:bg-light focus:cursor-default"}
+                            className={" pt-2.5 pb-2.5 pl-4 pr-4 w-full max-w-96 rounded-3xl bg-backgroundHover outline-0"}
                             value={jour} onChange={(event) => setJour(event.target.value as joursSemaine)}>
                             {
                                 Object.values(joursSemaine).map((day) => (

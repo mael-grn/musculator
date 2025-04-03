@@ -35,11 +35,11 @@ export default function newTraining() {
             {
                 loading ? <PageLoading/> :
                 <div className={"flex-1 flex flex-col"}>
-            <div className={"flex gap-3 mt-4 items-center"}>
+            <div className={"flex gap-6 mt-4 items-center"}>
                 <img onClick={() => router.back()}
-                     className={"w-12 h-12 p-2 rounded-3xl cursor-pointer bg-[var(--light)] md:hover:bg-[var(--hover-light)] active:scale-90"}
+                     className={"w-12 h-12 p-2 rounded-3xl cursor-pointer bg-primary active:scale-90"}
                      src={"/icons/arrow-left.svg"} alt={"back"}/>
-                <h2 className={"md:text-3xl text-xl"}>Créer une nouvelle séance</h2>
+                <h2>Créer une nouvelle séance</h2>
             </div>
 
             {

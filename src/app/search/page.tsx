@@ -30,15 +30,19 @@ export default function Explore() {
     }
 
   return (
-    <div className={"flex flex-col justify-center gap-10 items-center"}>
-        <div className={"w-full md:w-1/3 relative"}>
-            <input ref={inputRef} className={" w-full pt-2.5 pb-2.5 pl-3.5 pr-10"} onKeyUp={onSearch} type={"text"}
-                   placeholder={"Rechercher"}/>
-            <img alt={"icon"} className={"opacity-50 cursor-pointer absolute top-0 right-0 w-fit h-full p-2 md:hover:opacity-80 active:scale-90"} src={"/icons/search.svg"} onClick={onSearch}/>
+    <div className={"flex flex-col justify-center gap-10 items-center relative"}>
+        <div className={"w-full sticky -top-1 left-0 p-4 bg-gradient-to-t from-transparent to-background z-10"}>
+            <div className={"w-full h-16 relative"}>
+                <input ref={inputRef} className={" w-full pt-2.5 pb-2.5 pl-6 pr-10 h-16"} onKeyUp={onSearch}
+                       type={"text"}
+                       placeholder={"Rechercher"}/>
+                <img alt={"icon"} className={"cursor-pointer absolute top-4 right-4 w-8 h-8 active:scale-90 invert"}
+                     src={"/icons/search.svg"} onClick={onSearch}/>
+            </div>
         </div>
         <div className={"flex flex-wrap justify-center gap-10"}>
             {
-                exerciseList.slice(0, nbrExoToShow).map((exercise : Exercise, index : number) => {
+                exerciseList.slice(0, nbrExoToShow).map((exercise: Exercise, index: number) => {
                     return (
                         <ExerciseComponent exercise={exercise} key={index}/>
                     )
